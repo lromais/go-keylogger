@@ -1,0 +1,31 @@
+version: "3"
+services:
+  elastic:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    environment: 
+      - "http.host=0.0.0.0"
+      - "transport.host=127.0.0.1"
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:6.8.10
+    container_name: logstash
+    ports:
+      - "5044:5044"
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.8.10
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - "ELASTICSEARCH_URL=http://elastic:9200"
+
+networks: 
+  elastic:
+
+
+#docker  container run -dt -p 9200:9200 -e “http.host=0.0.0.0” -e “transport.host=127.0.0.1" --network=elastic --name=elastic docker.elastic.co/elasticsearch/elasticsearch:6.8.10
+#docker  container run -dt -p 5601:5601 -e “ELASTICSEARCH_URL=http://elastic:9200” --network=elastic --name=kibana docker.elastic.co/kibana/kibana:6.8.10
