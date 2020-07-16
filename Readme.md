@@ -1,4 +1,6 @@
-# Repo de estudo de golang
+# Repo Software de captura keylooger com elasticsearch
+
+## Repo para estudos da linguagem golang e elasticsearch
 
 ## Software em desenvolvimento - keylogger em golang
 
