@@ -5,6 +5,7 @@
 Esse software é desenvolvido em Golang com a finalidade de fazer a captura das teclas digitadas em um sistema operacional linux e evniar para ElasticSearch.
 Lembrando que  esse repo se fere a um estudo e não é um software para se usar em ambiente real.
 Para que possa ser executado com perfeição será necessário:
+
 * Ter um sistema linux (preferencia Debian like)
 * Possuir acesso ao sudores
 * Ter o docker-compose instalado 
