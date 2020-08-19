@@ -54,7 +54,7 @@ func main() {
 
 	// Verifica se o caminho do teclado
 	if len(keyboard) <= 0 {
-		logrus.Error("Teclado nao encontrado...vc precica passar o caminho do device")
+		logrus.Error("Teclado nao encontrado...vc precisa passar o caminho do device")
 		return
 	}
 
